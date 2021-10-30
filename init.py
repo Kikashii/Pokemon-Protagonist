@@ -56,7 +56,7 @@ def enemyInit(data):
     # make tower defense route
     createRoute(data)
     # set pokemons for current wave
-    setWave(data)
+    # setWave(data)
 
 def listInit(data):
     # pokemon to be appended to enemies

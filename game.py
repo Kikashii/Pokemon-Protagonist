@@ -1,6 +1,7 @@
 from draw import *
 from mouse import *
 from classinit import *
+from timerfired import *
 
 def game():  # runs game
     init(data)

@@ -34,7 +34,7 @@ def drawEnemies(data):  # draws all enemies
             colorRect = (enemy.x+17-enemy.size, enemy.y-enemy.size-10,
                          round(62*percent), 5)
             pygame.draw.rect(data.screen, color, colorRect)
-            lifebarframe = pygame.image.load("lifebar.png")
+            lifebarframe = pygame.image.load("Assets/lifebar.jpg")
             lifebarframe = pygame.transform.scale(lifebarframe, (81, 7))
             data.screen.blit(lifebarframe, (enemy.x-enemy.size,
                                             enemy.y-enemy.size-10))

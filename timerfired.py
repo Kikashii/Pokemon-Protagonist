@@ -1,4 +1,5 @@
 from init import *
+from classinit import *
 
 def roundOver(data):  # check whether round is over.
     # either all enemies killed or reached end

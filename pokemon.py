@@ -12,9 +12,10 @@ class Pokemon(object):  # pokemon class
         self.baseHp, self.baseAttack, self.baseDefense = tup[4], tup[5], tup[6]
         self.evolveConditions = tup[7]
         self.bounds = None
+        self.size = data.pokemonSize
         #self.setSize()
         self.button = None  # if is pressed to see status, items, etc
-        image = pygame.image.load("Assets/%s.png" % self.pokemon)  # get image
+        image = pygame.image.load("Assets/%s.jpg" % self.pokemon)  # get image
         self.img = pygame.transform.scale(image, (self.size*2, self.size*2))
 
     # def setSize(self):
