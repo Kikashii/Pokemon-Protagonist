@@ -1,5 +1,6 @@
 from init import *
 from classinit import *
+from hover import *
 
 def roundOver(data):  # check whether round is over.
     # either all enemies killed or reached end
@@ -8,6 +9,15 @@ def roundOver(data):  # check whether round is over.
             return False
     return True
 
+def levelUp(data):  # levels up if exp hits max exp and updates stats
+    for tower in data.party:
+        if tower.onBoard:
+            if tower.exp >= tower.maxExp:
+                tower.attackGrowth += 2
+                tower.exp = 0
+                tower.level += 1
+                tower.maxExp += 5
+                tower.updateStats()
     
 def moveAllEnemies(data):  # move all enemies along path
     if data.waveEnemies != []:  # first add wave enemy to enemy one by one
@@ -26,9 +36,15 @@ def moveAllEnemies(data):  # move all enemies along path
                 #     data.gameOver = True
 
 def timerFired(data):  # general timerfired function wrap
-    if data.paused == False:
-        moveAllEnemies(data)
-        if (data.enemies != [] and roundOver(data)):
-            data.paused, data.enemies = True, []
-            data.wave += 1
-            setWave(data)
+    if data.intro == False
+        hover(data)
+        if data.paused == False:
+            moveAllEnemies(data)
+            levelUp(data)
+            if (data.enemies != [] and roundOver(data)):
+                data.paused, data.enemies = True, []
+                data.wave += 1
+                setWave(data)
+
+    else:
+        introHover(data)

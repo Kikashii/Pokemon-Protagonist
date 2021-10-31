@@ -38,15 +38,23 @@ def databaseInit(data):
     data.pokemonSize = 35
     # make tower defense route
     #createRoute(data)
+    #setStarters(data)
     data.boardBounds = 0, 1020, 0, 630
 
 def playerInit(data):
     data.lives = 10  # max num of lives
     data.wave = 1  # current wave count
+    data.coins = 50  # money player has
+    # whether to show pokemon status
+    data.status = None
+    # whether mouse is hovering on button or pokemon
+    data.hover = None
+    # to pick up pokemon to place on board
+    data.selected = None
 
 def enemyInit(data):
     # speed of enemy
-    data.speed = 4
+    data.speed = 3
     # counter for frames before placing a new enemy
     data.count = 30
     # max frames to place new enemy
@@ -59,14 +67,20 @@ def enemyInit(data):
     # setWave(data)
 
 def listInit(data):
+    # 3 starter pokemons for intro
+    data.starters = []
     # pokemon to be appended to enemies
     data.waveEnemies = []
     # wild pokemon for current wave
     data.enemies = []
+    # all pokemon in party
+    data.party = []
 
 def modeInit(data):
     #screen is paused
     data.paused = True
+    #intro mode
+    data.intro = True
     
 def createRoute(data):  # creates path
     corners = [(0, 600), (290, 600), (290, 270), (520, 270), (520, 510),
