@@ -57,6 +57,11 @@ def drawMenu():  # draws menu with all buttons and text
     font = pygame.font.Font("Assets/pokemon_pixel_font.ttf", 35)
     pkbl = font.render("Pokeball", True, (0, 0, 0))
     data.screen.blit(pkbl, (leftbound + 30, 440 + 10))
+    price = font.render(str(200), True, (0, 0, 0))
+    data.screen.blit(price, (leftbound + 195, 440 + 10))
+    moneySign = pygame.image.load("Assets/money.png")
+    moneySign = pygame.transform.scale(moneySign, (30, 30))
+    data.screen.blit(moneySign, (leftbound + 170, 440+10))
 
 
 def drawParty():
