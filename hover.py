@@ -67,7 +67,7 @@ def hover(data):  # general hover fucntion wrap
         pygame.draw.rect(data.screen, (255, 0, 0), (1115, 412, 50, 18), 1)
     elif inParty(x, y):
         data.hover = inParty(x, y)
-    # elif buttonHover(data, x, y) != False:
-    #     data.hover = buttonHover(data, x, y)
+    elif pokeballBound(x, y):
+        data.hover = 1
     else:
         data.hover = None

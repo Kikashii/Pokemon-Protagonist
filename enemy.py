@@ -32,9 +32,9 @@ class Enemy(Pokemon):
             self.exit = True  # disappears
             self.bounds = None
 
-    # def catchEnemy(self, x, y):  # if catches enemy when pokeball mode is on
-    #     x0, y0, x1, y1 = self.bounds
-    #     return x > x0 and x < x1 and y > y0 and y < y1
+    def catchEnemy(self, x, y):  # if catches enemy when pokeball mode is on
+        x0, y0, x1, y1 = self.bounds
+        return x0 < x < x1 and y0 < y < y1
 
     def drawEnemy(self, canvas):
         data.screen.blit(self.img, (self.x - self.size, self.y - self.size))

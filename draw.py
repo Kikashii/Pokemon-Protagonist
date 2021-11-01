@@ -70,7 +70,7 @@ def drawParty():
         name = pokemon.pokemon
         pokemon.button = startX, startY, width, height
         if data.hover == pokemon or data.selected == pokemon:
-            pygame.draw.rect(data.screen, (255, 0, 0), (pokemon.button), 1)
+            pygame.draw.rect(data.screen, (255, 0, 0), pokemon.button, 1)
         name = font.render(name, True, (0, 0, 0))
         data.screen.blit(name, (startX + 5, startY + 5))
         startY += 25
@@ -153,7 +153,7 @@ def drawPause():  # draws pause button
 
 def drawEnemies(data):  # draws all enemies
     for enemy in data.enemies:
-        if enemy.exit == False:  # make sure is not dead or reached goal
+        if not enemy.exit:  # make sure is not dead or reached goal
             enemy.drawEnemy(data.screen)
             percent = enemy.hp / enemy.maxHp
             # set color of life bar
@@ -186,6 +186,13 @@ def drawAllBullets(data):  # draws all bullets on board
                 bullet.drawBullet(data.screen)
 
 
+def drawPokeball(data):  # draws pokeball if is selected
+    if data.pokeball:
+        x, y = pygame.mouse.get_pos()
+        img = pygame.image.load("Assets/Pokeball.png")
+        data.screen.blit(img, (x - 42, y - 42))
+
+
 def redrawAll():  # redraws all draw functions
     if data.intro:
         drawIntro(data)
@@ -194,6 +201,7 @@ def redrawAll():  # redraws all draw functions
         drawTowers(data)
         drawRadius(data)
         drawText(data)
+        drawPokeball(data)
         drawMenu()
         drawParty()
         drawStatus(data)

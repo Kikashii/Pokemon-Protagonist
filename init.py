@@ -42,6 +42,7 @@ def databaseInit(data):
     # make tower defense route
     # createRoute(data)
     # setStarters(data)
+    # data.pokebal = False
     data.boardBounds = 0, 1020, 0, 630
     data.elementsChart = elementsChart()
 
@@ -89,6 +90,7 @@ def modeInit(data):
     data.paused = True
     # intro mode
     data.intro = True
+    data.pokeball = False
 
 
 def createRoute(data):  # creates path

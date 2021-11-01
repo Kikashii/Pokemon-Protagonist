@@ -144,6 +144,23 @@ def allBulletsRemoved(data):
     return True
 
 
+def catchPokemon(data, x, y):  # thrwos pokeball. check for enemy bouds
+    data.pokeball = False
+    for enemy in data.enemies:
+        if enemy.exit == False and enemy.catchEnemy(x, y):
+            # run possibility of catching enemy
+            if runPossibility(enemy) and len(data.party) < 6:  # max party is 6
+                data.party.append(MyParty(enemy.id, data, enemy.level))
+                enemy.exit = True
+
+
+def runPossibility(enemy):
+    # algorithm calculating the possibility of catching a pokemon based on level
+    poss = round((1 - (enemy.hp / enemy.maxHp) ** 2) * 100)
+    if random.randint(1, 100) <= poss:
+        return True
+
+
 def timerFired(data):  # general timerfired function wrap
     if not data.intro:
         hover(data)

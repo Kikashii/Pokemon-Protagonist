@@ -2,11 +2,19 @@ from init import *
 from button import *
 from Myparty import *
 from hover import *
+from timerfired import *
+
 
 def menuButtons(x, y):
+    if pokeballBound(x, y) and data.pokeball == False:
+        data.paused = True
+        data.pokeball = True
+        if data.coins >= 200:
+            data.coins -= 200
+        data.paused = False
     if inParty(x, y):
         curPoke = inParty(x, y)  # current pokemon
-        if curPoke.onBoard == False:  # only in party not on board yet
+        if not curPoke.onBoard:  # only in party not on board yet
             data.selected = curPoke  # pick up pokemon
             data.selected.x, data.selected.y = x, y
         # already on board, show status
@@ -15,7 +23,9 @@ def menuButtons(x, y):
 
 
 def mousePart2(x, y, data):  # part 2 of mousePresed wrap
-    if inPlay(x, y):
+    if data.pokeball:
+        catchPokemon(data, x, y)
+    elif inPlay(x, y):
         data.paused = False
     elif inPause(x, y):
         data.paused = True
@@ -23,18 +33,21 @@ def mousePart2(x, y, data):  # part 2 of mousePresed wrap
         # picked up to pokemon to put on board
         if onBoard(data, x, y) and isLegal(data, x, y):
             data.selected.x, data.selected.y = x, y
-            data.selected.bounds = x-10, y-10, x+10, y+10
+            data.selected.bounds = x - 10, y - 10, x + 10, y + 10
             data.selected.onBoard, data.selected = True, None
-    elif data.status != None and inReleaseBounds(x, y):
+    elif data.status is not None and inReleaseBounds(x, y):
         data.party.remove(data.status)
         data.status = None
+    # elif data.pokeball:
+    #   catchPokemon(data, x, y)
     elif inMenuBounds(x, y):
         menuButtons(x, y)
+
 
 def mouseIntro(data, x, y):  # mouse pressed for intro
     for pokemon in data.starters:
         x0, y0, x1, y1 = pokemon.pokeball
-        if x > x0 and x < x1 and y > y0 and y < y1:  # add chosen pokemon to party
+        if x0 < x < x1 and y0 < y < y1:  # add chosen pokemon to party
             data.party.append(MyParty(pokemon.id, data))
             data.intro = False
 
@@ -47,4 +60,3 @@ def mouse(data):  # mouse pressed wrap
         mouseIntro(data, x, y)
     else:
         mousePart2(x, y, data)
-
