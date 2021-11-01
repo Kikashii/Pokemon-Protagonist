@@ -7,8 +7,8 @@ import math
 from database import *
 
 
-class Struct(
-    object):  # inherited from object which is base class. In python 3.x, If we don't write object it will also work
+class Struct(object):  # inherited from object which is base class.
+    # In python 3.x, If we don't write object it will also work
     pass  # null statement. Doesn't do anything.
 
 
