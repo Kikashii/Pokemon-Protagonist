@@ -7,14 +7,16 @@ import math
 from database import *
 
 
-class Struct(object):  # inherited from object which is base class. In python 3.x, If we don't write object it will also work
+class Struct(
+    object):  # inherited from object which is base class. In python 3.x, If we don't write object it will also work
     pass  # null statement. Doesn't do anything.
 
 
 data = Struct()
 
+
 def init(data):
-     # pygame init - Initializes pygame modules
+    # pygame init - Initializes pygame modules
     pygame.init()
     # set screen size and screen
     data.size = width, height = 1280, 720  # tuple integer
@@ -31,15 +33,18 @@ def init(data):
     # set all values to do with enemies
     enemyInit(data)
 
+
 def databaseInit(data):
     # set pokemon data from database.py
     data.database = setPokemonData()
     # size of my pokemons- placing rectangle size
     data.pokemonSize = 35
     # make tower defense route
-    #createRoute(data)
-    #setStarters(data)
+    # createRoute(data)
+    # setStarters(data)
     data.boardBounds = 0, 1020, 0, 630
+    data.elementsChart = elementsChart()
+
 
 def playerInit(data):
     data.lives = 10  # max num of lives
@@ -51,6 +56,7 @@ def playerInit(data):
     data.hover = None
     # to pick up pokemon to place on board
     data.selected = None
+
 
 def enemyInit(data):
     # speed of enemy
@@ -66,6 +72,7 @@ def enemyInit(data):
     # set pokemons for current wave
     # setWave(data)
 
+
 def listInit(data):
     # 3 starter pokemons for intro
     data.starters = []
@@ -76,12 +83,14 @@ def listInit(data):
     # all pokemon in party
     data.party = []
 
+
 def modeInit(data):
-    #screen is paused
+    # screen is paused
     data.paused = True
-    #intro mode
+    # intro mode
     data.intro = True
-    
+
+
 def createRoute(data):  # creates path
     corners = [(0, 600), (290, 600), (290, 270), (520, 270), (520, 510),
                (660, 510), (660, 600), (970, 600), (970,
@@ -91,11 +100,11 @@ def createRoute(data):  # creates path
     data.checkPoints = []
     # adds all x,y positions into new list
     for i in range(1, len(corners)):
-        x0, y0 = corners[i-1]
+        x0, y0 = corners[i - 1]
         x1, y1 = corners[i]
         # check if horizontal or vertical
         # horizontal
-        if x1-x0 == 0:
+        if x1 - x0 == 0:
             verticlePath(data, x0, y0, x1, y1)
         # verticle
         else:
@@ -104,23 +113,21 @@ def createRoute(data):  # creates path
 
 def verticlePath(data, x0, y0, x1, y1):
     # find difference = distance between 2corners
-    d = y1-y0
+    d = y1 - y0
     # loops through every pixel between distance
     for i in range(abs(d)):
         # check if route is going up or down
         if d < 0:  # will go downward
-            data.checkPoints.append((x0, y0-i))
+            data.checkPoints.append((x0, y0 - i))
         else:  # will go upward
-            data.checkPoints.append((x0, y0+i))
+            data.checkPoints.append((x0, y0 + i))
 
 
 def horizontalPath(data, x0, y0, x1, y1):
     # same as verticle path but using x coordinates
-    d = x1-x0
+    d = x1 - x0
     for i in range(abs(d)):
         if d < 0:  # will go left
-            data.checkPoints.append((x0-i, y0))
+            data.checkPoints.append((x0 - i, y0))
         else:  # will go right
             data.checkPoints.append((x0 + i, y0))
-            
-

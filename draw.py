@@ -1,6 +1,7 @@
 from init import *
 from Myparty import *
 
+
 def drawStatus(data):  # draws status of pokemon in status box
     color = 0, 0, 0
     font = pygame.font.Font("Assets/pokemon_pixel_font.ttf", 20)
@@ -15,15 +16,14 @@ def drawStatus(data):  # draws status of pokemon in status box
         level = font.render(("Level: %d" % pokemon.level), True, color)
         data.screen.blit(level, (1035, 280))
         attack = font.render(("Attack: %d" %
-                              (pokemon.baseAttack+pokemon.attackGrowth)), True, color)
+                              (pokemon.baseAttack + pokemon.attackGrowth)), True, color)
         data.screen.blit(attack, (1035, 265))
         release = font.render("Release", True, color)
         data.screen.blit(release, (1118, 412))
         if pokemon.onBoard:
             exp = font.render(("EXP untill next level: %d" %
-                               (pokemon.maxExp-pokemon.exp)), True, color)
+                               (pokemon.maxExp - pokemon.exp)), True, color)
             data.screen.blit(exp, (1035, 295))
-
 
 
 def drawText(data):  # draws all menu text
@@ -40,23 +40,25 @@ def drawText(data):  # draws all menu text
     Help = font.render("Help", True, (255, 255, 255))
     data.screen.blit(Help, (670, 27))
 
+
 def drawMenu():  # draws menu with all buttons and text
     leftbound, width, topbound, height, color = 1020, 250, 10, 620, (
         255, 255, 255)
     menuStart, buttonHeight = 440, 50
     font = pygame.font.Font("Assets/pokemon_pixel_font.ttf", 40)
     party = font.render("POKeMON", True, (0, 0, 0))
-    data.screen.blit(party, (leftbound+70, 23))
+    data.screen.blit(party, (leftbound + 70, 23))
     for i in range(1, 4):
         if i == data.hover:
             color = 255, 0, 0
-            pygame.draw.rect(data.screen, color, (leftbound+10,
-                                                  menuStart, width-20, buttonHeight), 2)
+            pygame.draw.rect(data.screen, color, (leftbound + 10,
+                                                  menuStart, width - 20, buttonHeight), 2)
         menuStart += buttonHeight + 10
     font = pygame.font.Font("Assets/pokemon_pixel_font.ttf", 35)
     pkbl = font.render("Pokeball", True, (0, 0, 0))
-    data.screen.blit(pkbl, (leftbound+30, 440+10))
-        
+    data.screen.blit(pkbl, (leftbound + 30, 440 + 10))
+
+
 def drawParty():
     startY = 60
     startX = 1030
@@ -70,7 +72,7 @@ def drawParty():
         if data.hover == pokemon or data.selected == pokemon:
             pygame.draw.rect(data.screen, (255, 0, 0), (pokemon.button), 1)
         name = font.render(name, True, (0, 0, 0))
-        data.screen.blit(name, (startX+5, startY+5))
+        data.screen.blit(name, (startX + 5, startY + 5))
         startY += 25
 
 
@@ -81,6 +83,7 @@ def drawRadius(data):  # draws radius if a tower is selected
         else:
             pokemon = data.status
         pokemon.drawRadius(data.screen)
+
 
 def drawTextRect(surface, text, color, rect, font, aa=False, bkg=None):
     rect, lineSpacing = pygame.Rect(rect), -2
@@ -110,6 +113,7 @@ def drawTextRect(surface, text, color, rect, font, aa=False, bkg=None):
         text = text[i:]
     return text
 
+
 def drawIntroText(data):
     font = pygame.font.Font("Assets/pokemon_pixel_font.ttf", 40)
     color = 0, 0, 0
@@ -117,36 +121,41 @@ def drawIntroText(data):
     rect = 248, 571, 793, 104
     drawTextRect(data.screen, text, color, rect, font)
 
+
 def drawIntro(data):  # draws intro
-    img = pygame.image.load("Assets/starter.jpg")
+    img = pygame.image.load("Assets/starter.png")
     data.screen.fill((0, 0, 0))  # fill screen with black first
     img = pygame.transform.scale(img, (922, 691))
     data.screen.blit(img, (167, 8))
     drawIntroText(data)
 
+
 def loadBackground():  # load main background map
     img = pygame.image.load("Assets/TPbackground.jpg")
     data.screen.blit(img, (0, 0))
 
+
 def drawPlay():  # draw play button
     x0, y0 = 40, 40
-    #width, height = 70, 70
-    img = pygame.image.load("Assets/arow.jpg")
-    #img = pygame.transform.scale(img, (50, 50))
+    # width, height = 70, 70
+    img = pygame.image.load("Assets/arow.png")
+    # img = pygame.transform.scale(img, (50, 50))
     data.screen.blit(img, (x0, y0))
+
 
 def drawPause():  # draws pause button
     x0, y0 = 126, 32
     width, height = 70, 70
-    img = pygame.image.load("Assets/pause.jpg")
+    img = pygame.image.load("Assets/pause.png")
     img = pygame.transform.scale(img, (50, 50))
     data.screen.blit(img, (x0, y0))
+
 
 def drawEnemies(data):  # draws all enemies
     for enemy in data.enemies:
         if enemy.exit == False:  # make sure is not dead or reached goal
             enemy.drawEnemy(data.screen)
-            percent = enemy.hp/enemy.maxHp
+            percent = enemy.hp / enemy.maxHp
             # set color of life bar
             if percent > .5:
                 color = 0, 207, 0
@@ -155,23 +164,33 @@ def drawEnemies(data):  # draws all enemies
             else:
                 color = 255, 160, 0
             # draw lifebar above pokemon
-            colorRect = (enemy.x+17-enemy.size, enemy.y-enemy.size-10,
-                         round(62*percent), 5)
+            colorRect = (enemy.x + 17 - enemy.size, enemy.y - enemy.size - 10,
+                         round(62 * percent), 5)
             pygame.draw.rect(data.screen, color, colorRect)
-            lifebarframe = pygame.image.load("Assets/lifebar.jpg")
+            lifebarframe = pygame.image.load("Assets/lifebar.png")
             lifebarframe = pygame.transform.scale(lifebarframe, (81, 7))
-            data.screen.blit(lifebarframe, (enemy.x-enemy.size,
+            data.screen.blit(lifebarframe, (enemy.x - enemy.size,
                                             enemy.y - enemy.size - 10))
-                                            
+
+
 def drawTowers(data):  # draw all towers on board
     for pokemon in data.party:
-        if pokemon.onBoard == True:
+        if pokemon.onBoard:
             pokemon.drawTower(data.screen)
+
+
+def drawAllBullets(data):  # draws all bullets on board
+    for tower in data.party:
+        if tower.onBoard and tower.bullets != []:
+            for bullet in tower.bullets:
+                bullet.drawBullet(data.screen)
+
 
 def redrawAll():  # redraws all draw functions
     if data.intro:
         drawIntro(data)
-    else :
+    else:
+        drawAllBullets(data)
         drawTowers(data)
         drawRadius(data)
         drawText(data)
@@ -181,4 +200,3 @@ def redrawAll():  # redraws all draw functions
         drawPlay()
         drawPause()
         drawEnemies(data)
-

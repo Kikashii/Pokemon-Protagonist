@@ -7,3 +7,23 @@ def setPokemonData():  # some sample pokemons for testing
     pokemons[15] = ("Pidgey", "flying", 1, 17, 40, 40, 37, 18)
     pokemons[20] = ("Rattata", "normal", 1, 20, 30, 41, 35, 20)
     return pokemons
+
+
+# d[element] = 2dlist:not very effective,super effective,no effect
+def elementsChart():
+    d = dict()
+    d["fire"] = [["fire", "water", "rock", "dragon"],
+                 ["grass", "ice", "bug", "steel"], None]
+    d["normal"] = [["rock", "steel"], None, ["ghost"]]
+    d["water"] = [['water', 'grass', 'dragon'], ['fire', 'ground', 'rock'], None]
+    d['electric'] = [['electric', 'grass', 'dragon'], ['water', 'flying'],
+                     ['ground']]
+    d['grass'] = [['fire', 'grass', 'poison', 'flying', 'bug', 'dragon', 'steel'],
+                  ['water', 'ground', 'rock'], None]
+    d['poison'] = [['poison', 'ground', 'rock', 'ghost'], ['grass'], ['steel']]
+    d['flying'] = [['electric', 'rock', 'steel'], ['grass', 'fighting', 'bug'], None]
+    d['bug'] = [['fire', 'fighting', 'poison', 'flying', 'ghost', 'steel'],
+                ['grass', 'dark', 'psychic'], None]
+    d['ghost'] = [['dark'], ['psychic', 'ghost'], ['normal']]
+    d['dragon'] = [['steel'], ['dragon'], None]
+    return d
