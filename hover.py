@@ -53,6 +53,12 @@ def introHover(data):  # for starts hover during intro
             pokemon.drawTower(data.screen)
 
 
+def gameoverHover(data):  # hover for restart button
+    x, y = pygame.mouse.get_pos()
+    if inRestartBounds(x, y):
+        pygame.draw.rect(data.screen, (255, 0, 0), (698, 570, 119, 36), 2)
+
+
 def hover(data):  # general hover fucntion wrap
     x, y = pygame.mouse.get_pos()
     # if onHelp(x, y):  # when mouse on help button, show instructions

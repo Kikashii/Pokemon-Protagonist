@@ -36,8 +36,8 @@ def moveAllEnemies(data):  # move all enemies along path
             enemy.moveEnemy()
             if enemy.exit:
                 data.lives -= 1
-                # if data.lives == 0:
-                #     data.gameOver = True
+                if data.lives == 0:
+                    data.gameOver = True
 
 
 def moveAllBullets(data):  # moves all bullets toward set direction
@@ -162,7 +162,9 @@ def runPossibility(enemy):
 
 
 def timerFired(data):  # general timerfired function wrap
-    if not data.intro:
+    if data.gameOver:
+        gameoverHover(data)
+    elif not data.intro:
         hover(data)
         if not data.paused:
             moveAllEnemies(data)

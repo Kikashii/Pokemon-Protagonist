@@ -91,6 +91,7 @@ def modeInit(data):
     # intro mode
     data.intro = True
     data.pokeball = False
+    data.gameOver = False
 
 
 def createRoute(data):  # creates path

@@ -54,9 +54,9 @@ def mouseIntro(data, x, y):  # mouse pressed for intro
 
 def mouse(data):  # mouse pressed wrap
     x, y = pygame.mouse.get_pos()
-    # if data.gameOver:
-    #     gameoverPressed(data, x, y)
-    if data.intro:
+    if data.gameOver:
+        gameoverPressed(data, x, y)
+    elif data.intro:
         mouseIntro(data, x, y)
     else:
         mousePart2(x, y, data)

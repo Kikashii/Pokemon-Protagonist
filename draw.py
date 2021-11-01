@@ -198,8 +198,23 @@ def drawPokeball(data):  # draws pokeball if is selected
         data.screen.blit(img, (x - 42, y - 42))
 
 
+def drawGameOver(data):  # draws gameover
+    font = pygame.font.Font("Assets/pokemon_pixel_font.ttf", 40)
+    img = pygame.image.load("Assets/gameover.png")
+    img = pygame.transform.scale(img, (data.size))
+    data.screen.blit(img, (0, 0))
+    gameover = font.render("Game Over", True, (0, 0, 0))
+    data.screen.blit(gameover, (880, 452))
+    wave = font.render(("Last wave: %d" % data.wave), True, (0, 0, 0))
+    data.screen.blit(wave, (701, 512))
+    restart = font.render("Restart?", True, (0, 0, 0))
+    data.screen.blit(restart, (701, 572))
+
+
 def redrawAll():  # redraws all draw functions
-    if data.intro:
+    if data.gameOver:
+        drawGameOver(data)
+    elif data.intro:
         drawIntro(data)
     else:
         drawAllBullets(data)

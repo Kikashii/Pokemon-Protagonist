@@ -8,7 +8,7 @@ def game():  # runs game
     init(data)
     cinit()
     while True:
-        if not data.intro:
+        if not data.intro and not data.gameOver:
             loadBackground()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
