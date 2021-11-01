@@ -6,8 +6,9 @@ from timerfired import *
 def game():  # runs game
     init(data)
     cinit()
-    while True:    
-        loadBackground()
+    while True:
+        if data.intro == False :
+            loadBackground()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()

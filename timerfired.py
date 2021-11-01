@@ -36,7 +36,7 @@ def moveAllEnemies(data):  # move all enemies along path
                 #     data.gameOver = True
 
 def timerFired(data):  # general timerfired function wrap
-    if data.intro == False
+    if data.intro == False:
         hover(data)
         if data.paused == False:
             moveAllEnemies(data)

@@ -55,7 +55,7 @@ def hover(data):  # general hover fucntion wrap
     #     data.help = False
     if data.selected != None:  # put tower on board
         buildTowerHover(x, y, data)
-    if inParty(x, y) and data.selectedItem != None:
+    if inParty(x, y):
         data.hover = inParty(x, y)
     elif data.status != None and inReleaseBounds(x, y):
         pygame.draw.rect(data.screen, (255, 0, 0), (1115, 412, 50, 18), 1)

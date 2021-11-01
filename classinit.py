@@ -19,8 +19,8 @@ def setStarters(data):
     # append charmander, bulbasur and squirtle to set starters
     # set pokemon from database
     bulbasaur = MyParty(1, data)
-    charmander = MyParty(4, data)
-    squirtle = MyParty(7, data)
+    charmander = MyParty(5, data)
+    squirtle = MyParty(10, data)
     # find bounds of pokeballs in the intro
     bulbasaur.pokeball = 388, 278, 508, 400
     # set x y so starters can be drawn when mouse hovers

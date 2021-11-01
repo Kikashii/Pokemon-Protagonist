@@ -1,5 +1,17 @@
 from init import *
 from button import *
+from Myparty import *
+from hover import *
+
+def menuButtons(x, y):
+    if inParty(x, y):
+        curPoke = inParty(x, y)  # current pokemon
+        if curPoke.onBoard == False:  # only in party not on board yet
+            data.selected = curPoke  # pick up pokemon
+            data.selected.x, data.selected.y = x, y
+        # already on board, show status
+        else:
+            data.status = curPoke
 
 
 def mousePart2(x, y, data):  # part 2 of mousePresed wrap
