@@ -61,10 +61,10 @@ def gameoverHover(data):  # hover for restart button
 
 def hover(data):  # general hover fucntion wrap
     x, y = pygame.mouse.get_pos()
-    # if onHelp(x, y):  # when mouse on help button, show instructions
-    #     data.help, data.paused, data.selected = True, True, None
-    # else:
-    #     data.help = False
+    if onHelp(x, y):  # when mouse on help button, show instructions
+        data.help, data.paused, data.selected = True, True, None
+    else:
+        data.help = False
     if data.selected is not None:  # put tower on board
         buildTowerHover(x, y, data)
     if inParty(x, y):

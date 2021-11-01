@@ -34,11 +34,40 @@ def drawText(data):  # draws all menu text
     x1, y1 = 270, 30
     life = font.render(("HEALTH %d" % data.lives), True, (60, 59, 48))
     data.screen.blit(life, (x1, y1))
-    x2, y2, = 524, 30
+    x2, y2, = 517, 30
     money = font.render(str(data.coins), True, (60, 59, 48))
     data.screen.blit(money, (x2, y2))
     Help = font.render("Help", True, (255, 255, 255))
     data.screen.blit(Help, (670, 27))
+
+
+def returnText(num):
+    if num == 1:
+        return ("""\
+Click on the POKeMON in your party to set on board, see stats.""")
+    elif num == 2:
+        return ("""\
+You can buy Pokeball, and use it by clicking on the Pokeball text .""")
+    elif num == 3:
+        return ("""\
+Throw a Pokeball to expand your party, but make sure the enemy life is low!""")
+
+
+def drawHelp(data):  # draws all instructions
+    if data.help:
+        font = pygame.font.Font("Assets/pokemon_pixel_font.ttf", 26)
+        img = pygame.image.load("Assets/box.png")
+        data.screen.blit(img, (23, 83))
+        rect, color, rect3 = (41, 160, 312, 107), (0, 0, 0), (644, 455, 333, 71)
+        text = "Use these buttons to play and pause to control the waves."
+        drawTextRect(data.screen, text, color, rect, font)
+        rect1, rect2 = (644, 94, 333, 133), (644, 388, 333, 133)
+        text1 = returnText(1)
+        text2 = returnText(2)
+        text3 = returnText(3)
+        drawTextRect(data.screen, text1, color, rect1, font)
+        drawTextRect(data.screen, text2, color, rect2, font)
+        drawTextRect(data.screen, text3, color, rect3, font)
 
 
 def drawMenu():  # draws menu with all buttons and text
@@ -61,7 +90,7 @@ def drawMenu():  # draws menu with all buttons and text
     data.screen.blit(price, (leftbound + 180, 440 + 10))
     moneySign = pygame.image.load("Assets/money.png")
     moneySign = pygame.transform.scale(moneySign, (30, 30))
-    data.screen.blit(moneySign, (leftbound + 155, 440+10))
+    data.screen.blit(moneySign, (leftbound + 155, 440 + 10))
 
 
 def drawParty():
@@ -228,3 +257,4 @@ def redrawAll():  # redraws all draw functions
         drawPlay()
         drawPause()
         drawEnemies(data)
+        drawHelp(data)

@@ -37,8 +37,14 @@ def gameoverPressed(data, x, y):
     if inRestartBounds(x, y):  # if clicks on restart set init data
         init(data)
 
+
 def pokeballBound(x, y):  # if clicks in pokeball button
     x0, y0, x1, y1 = 1030, 440, 1260, 490
+    return x1 > x > x0 and y0 < y < y1
+
+
+def onHelp(x, y):
+    x0, y0, x1, y1 = 637, 16, 743, 63
     return x1 > x > x0 and y0 < y < y1
 
 
