@@ -8,9 +8,9 @@ from timerfired import *
 def menuButtons(x, y):
     if pokeballBound(x, y) and data.pokeball == False:
         data.paused = True
-        data.pokeball = True
         if data.coins >= 200:
             data.coins -= 200
+            data.pokeball = True
         data.paused = False
     if inParty(x, y):
         curPoke = inParty(x, y)  # current pokemon
@@ -38,8 +38,6 @@ def mousePart2(x, y, data):  # part 2 of mousePresed wrap
     elif data.status is not None and inReleaseBounds(x, y):
         data.party.remove(data.status)
         data.status = None
-    # elif data.pokeball:
-    #   catchPokemon(data, x, y)
     elif inMenuBounds(x, y):
         menuButtons(x, y)
 
