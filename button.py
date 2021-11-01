@@ -1,4 +1,5 @@
 from init import *
+from classinit import *
 
 
 def inPlay(x, y):
@@ -36,6 +37,7 @@ def inRestartBounds(x, y):  # for gameover screen
 def gameoverPressed(data, x, y):
     if inRestartBounds(x, y):  # if clicks on restart set init data
         init(data)
+        cinit()
 
 
 def pokeballBound(x, y):  # if clicks in pokeball button
