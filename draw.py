@@ -53,6 +53,9 @@ def drawMenu():  # draws menu with all buttons and text
             pygame.draw.rect(data.screen, color, (leftbound+10,
                                                   menuStart, width-20, buttonHeight), 2)
         menuStart += buttonHeight + 10
+    font = pygame.font.Font("Assets/pokemon_pixel_font.ttf", 35)
+    pkbl = font.render("Pokeball", True, (0, 0, 0))
+    data.screen.blit(pkbl, (leftbound+30, 440+10))
         
 def drawParty():
     startY = 60
