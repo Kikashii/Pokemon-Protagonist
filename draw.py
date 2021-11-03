@@ -224,6 +224,7 @@ def drawPokeball(data):  # draws pokeball if is selected
     if data.pokeball:
         x, y = pygame.mouse.get_pos()
         img = pygame.image.load("Assets/Pokeball.png")
+        img = pygame.transform.scale(img, (70, 70))
         data.screen.blit(img, (x - 42, y - 42))
 
 
@@ -238,6 +239,8 @@ def drawGameOver(data):  # draws gameover
     data.screen.blit(wave, (701, 512))
     restart = font.render("Restart?", True, (0, 0, 0))
     data.screen.blit(restart, (701, 572))
+    highscore = font.render("High Score", True, (0, 0, 0))
+    data.screen.blit(highscore, (900, 572))
 
 
 def redrawAll():  # redraws all draw functions
@@ -250,11 +253,11 @@ def redrawAll():  # redraws all draw functions
         drawTowers(data)
         drawRadius(data)
         drawText(data)
-        drawPokeball(data)
         drawMenu()
         drawParty()
         drawStatus(data)
         drawPlay()
         drawPause()
         drawEnemies(data)
+        drawPokeball(data)
         drawHelp(data)

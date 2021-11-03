@@ -48,9 +48,9 @@ def databaseInit(data):
 
 
 def playerInit(data):
-    data.lives = 10  # max num of lives
+    data.lives = 1  # max num of lives
     data.wave = 1  # current wave count
-    data.coins = 100  # money player has
+    data.coins = 10000  # money player has
     # whether to show pokemon status
     data.status = None
     # whether mouse is hovering on button or pokemon
