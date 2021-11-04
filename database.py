@@ -9,7 +9,7 @@ def setPokemonData():  # some sample pokemons for testing
     return pokemons
 
 
-# d[element] = 2dlist:not very effective,super effective,no effect
+# d[element] = 2D list:not very effective,super effective,no effect
 def elementsChart():
     d = dict()
     d["fire"] = [["fire", "water", "rock", "dragon"],

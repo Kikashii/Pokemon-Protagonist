@@ -38,6 +38,7 @@ def setStarters(data):
     data.starters.append(charmander)
     data.starters.append(squirtle)
 
+
 def cinit():
     setWave(data)
     setStarters(data)

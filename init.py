@@ -8,8 +8,7 @@ from database import *
 
 
 class Struct(object):  # inherited from object which is base class.
-    # In python 3.x, If we don't write object it will also work
-    pass  # null statement. Doesn't do anything.
+    pass
 
 
 data = Struct()
@@ -39,10 +38,6 @@ def databaseInit(data):
     data.database = setPokemonData()
     # size of my pokemons- placing rectangle size
     data.pokemonSize = 35
-    # make tower defense route
-    # createRoute(data)
-    # setStarters(data)
-    # data.pokebal = False
     data.boardBounds = 0, 1020, 0, 630
     data.elementsChart = elementsChart()
 
@@ -57,6 +52,7 @@ def playerInit(data):
     data.hover = None
     # to pick up pokemon to place on board
     data.selected = None
+    data.pokeball = False
 
 
 def enemyInit(data):
@@ -70,8 +66,6 @@ def enemyInit(data):
     data.num = 7
     # make tower defense route
     createRoute(data)
-    # set pokemons for current wave
-    # setWave(data)
 
 
 def listInit(data):
@@ -90,7 +84,6 @@ def modeInit(data):
     data.paused = True
     # intro mode
     data.intro = True
-    data.pokeball = False
     data.gameOver = False
     data.help = False
 

@@ -14,8 +14,6 @@ def game():  # runs game
             if event.type == pygame.QUIT:
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                # x, y = pygame.mouse.get_pos()
-                # print(x, y)
                 mouse(data)
         redrawAll()
         timerFired(data)
